@@ -29,14 +29,31 @@
 // - Display the highscores as a list
 // - When the user clicks on "clear highscores", clear local storage
 
+
+// A list of query selectors
 const startQuizButton = document.querySelector("#start");
 const startScreen = document.querySelector("#start-screen");
 const questions = document.querySelector("#questions");
 const choices = document.querySelector("#choices")
 const endScreen = document.querySelector("#end-screen");
 const questionTitle = document.querySelector("#question-title");
+const time = document.querySelector("#time");
 
 let i = 0;
+let count = 75;
+
+function timer() {
+
+    const interval = setInterval(function () {
+        count--;
+        time.textContent = count;
+
+        if (count <= 0) {
+            clearInterval(interval);
+        }
+    }, 1000);
+}
+
 
 const currentQuestion = questionTitle.textContent = questionsAndAnswers[i].question;
 
@@ -62,5 +79,7 @@ startQuizButton.addEventListener("click", startQuiz);
 function startQuiz() {
     startScreen.classList.add("hide");
     questions.classList.remove("hide");
+    time.textContent = count;
+    timer();
 }
 
