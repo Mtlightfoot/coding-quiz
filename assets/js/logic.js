@@ -85,12 +85,19 @@ choice.forEach(function (button) {
 });
 
 function choiceClick() {
+    if (questionsAndAnswers[i].answer === this.textContent) {
+        console.log("Correct!");
+    } else {
+        console.log("Incorrect");
+    }
     i++;
     questionTitle.textContent = questionsAndAnswers[i].question;
     choiceAButton.textContent = questionsAndAnswers[i].choiceA;
     choiceBButton.textContent = questionsAndAnswers[i].choiceB;
     choiceCButton.textContent = questionsAndAnswers[i].choiceC;
     choiceDButton.textContent = questionsAndAnswers[i].choiceD;
+
+
 }
 
 // The function to start the quiz
