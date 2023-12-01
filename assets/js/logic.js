@@ -21,3 +21,46 @@
 // - Add event listener to the choices div and check if the choice button is clicked
 // - If correct, display correct answer in feedback div, hide feedback div then display next question,
 // - If incorrect, subtract the timer, display "wrong answer" in feedback div, check the timer (if timer > 0 hide feedback div then display next question, if timer <= 0 hide feedback div then go display "end-screen and hide question screen")
+
+
+// highscores.html 
+// - Retrieve highscores from local storage
+// - sort the scores from highest to lowest
+// - Display the highscores as a list
+// - When the user clicks on "clear highscores", clear local storage
+
+const startQuizButton = document.querySelector("#start");
+const startScreen = document.querySelector("#start-screen");
+const questions = document.querySelector("#questions");
+const choices = document.querySelector("#choices")
+const endScreen = document.querySelector("#end-screen");
+const questionTitle = document.querySelector("#question-title");
+
+let i = 0;
+
+const currentQuestion = questionTitle.textContent = questionsAndAnswers[i].question;
+
+const choiceAButton = document.createElement("button");
+choiceAButton.textContent = questionsAndAnswers[i].choiceA;
+choices.appendChild(choiceAButton);
+
+const choiceBButton = document.createElement("button");
+choiceBButton.textContent = questionsAndAnswers[i].choiceB;
+choices.appendChild(choiceBButton);
+
+const choiceCButton = document.createElement("button");
+choiceCButton.textContent = questionsAndAnswers[i].choiceC;
+choices.appendChild(choiceCButton);
+
+const choiceDButton = document.createElement("button");
+choiceDButton.textContent = questionsAndAnswers[i].choiceD;
+choices.appendChild(choiceDButton);
+
+
+startQuizButton.addEventListener("click", startQuiz);
+
+function startQuiz() {
+    startScreen.classList.add("hide");
+    questions.classList.remove("hide");
+}
+
