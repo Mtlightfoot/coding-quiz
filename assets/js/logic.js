@@ -39,6 +39,7 @@ const endScreen = document.querySelector("#end-screen");
 const questionTitle = document.querySelector("#question-title");
 const time = document.querySelector("#time");
 
+// Timer that starts from 75 and ends at 0
 let i = 0;
 let count = 75;
 
@@ -54,27 +55,47 @@ function timer() {
     }, 1000);
 }
 
-
-const currentQuestion = questionTitle.textContent = questionsAndAnswers[i].question;
+// Questions and choices
+let currentQuestion = questionTitle.textContent = questionsAndAnswers[i].question;
 
 const choiceAButton = document.createElement("button");
 choiceAButton.textContent = questionsAndAnswers[i].choiceA;
+choiceAButton.classList = "choice";
 choices.appendChild(choiceAButton);
 
 const choiceBButton = document.createElement("button");
 choiceBButton.textContent = questionsAndAnswers[i].choiceB;
+choiceBButton.classList = "choice";
 choices.appendChild(choiceBButton);
 
 const choiceCButton = document.createElement("button");
 choiceCButton.textContent = questionsAndAnswers[i].choiceC;
+choiceCButton.classList = "choice";
 choices.appendChild(choiceCButton);
 
 const choiceDButton = document.createElement("button");
 choiceDButton.textContent = questionsAndAnswers[i].choiceD;
+choiceDButton.classList = "choice";
 choices.appendChild(choiceDButton);
 
+const choice = document.querySelectorAll(".choice");
 
+choice.forEach(function (button) {
+    button.addEventListener("click", choiceClick)
+});
+
+function choiceClick() {
+    i++;
+    questionTitle.textContent = questionsAndAnswers[i].question;
+    choiceAButton.textContent = questionsAndAnswers[i].choiceA;
+    choiceBButton.textContent = questionsAndAnswers[i].choiceB;
+    choiceCButton.textContent = questionsAndAnswers[i].choiceC;
+    choiceDButton.textContent = questionsAndAnswers[i].choiceD;
+}
+
+// The function to start the quiz
 startQuizButton.addEventListener("click", startQuiz);
+
 
 function startQuiz() {
     startScreen.classList.add("hide");
