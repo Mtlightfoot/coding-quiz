@@ -39,8 +39,16 @@ const endScreen = document.querySelector("#end-screen");
 const questionTitle = document.querySelector("#question-title");
 const time = document.querySelector("#time");
 const feedback = document.querySelector("#feedback");
+const submitButton = document.querySelector("#submit")
 
-
+// A function to grab the new score and initials
+function newScore() {
+    const newScore = {
+        initial: document.getElementById("initials").value,
+        score: count,
+    };
+    console.log(newScore);
+}
 
 // Timer that starts from 75 and ends at 0
 let i = 0;
@@ -109,6 +117,7 @@ function choiceClick() {
     if ((i + 1) === questionsAndAnswers.length || count <= 0) {
         questions.classList.add("hide");
         endScreen.classList.remove("hide");
+        submitButton.addEventListener("click", newScore)
     } else {
         i++;
         questionTitle.textContent = questionsAndAnswers[i].question;
@@ -130,4 +139,5 @@ function startQuiz() {
     time.textContent = count;
     timer();
 }
+
 
