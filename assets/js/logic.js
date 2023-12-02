@@ -43,12 +43,22 @@ const submitButton = document.querySelector("#submit")
 
 // A function to grab the new score and initials
 function newScore() {
+    let highscoresFromStorage = JSON.parse(localStorage.getItem("highscores"));
+
+    if (highscoresFromStorage === null) {
+        highscoresFromStorage = [];
+    }
+
     const newScore = {
         initial: document.getElementById("initials").value,
         score: count,
     };
-    console.log(newScore);
-    localStorage.setItem("highscores", JSON.stringify(newScore));
+
+    highscoresFromStorage.push(newScore);
+    localStorage.setItem("highscores", JSON.stringify(highscoresFromStorage));
+
+    console.log(highscoresFromStorage)
+
 }
 
 // Timer that starts from 75 and ends at 0
