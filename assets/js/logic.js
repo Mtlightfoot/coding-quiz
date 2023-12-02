@@ -38,6 +38,9 @@ const choices = document.querySelector("#choices")
 const endScreen = document.querySelector("#end-screen");
 const questionTitle = document.querySelector("#question-title");
 const time = document.querySelector("#time");
+const feedback = document.querySelector("#feedback");
+
+
 
 // Timer that starts from 75 and ends at 0
 let i = 0;
@@ -48,8 +51,7 @@ function timer() {
     const interval = setInterval(function () {
         count--;
         time.textContent = count;
-
-        if (count <= 0) {
+        if (count <= 0 || ((i + 1 === questionsAndAnswers.length))) {
             clearInterval(interval);
         }
     }, 1000);
@@ -84,20 +86,38 @@ choice.forEach(function (button) {
     button.addEventListener("click", choiceClick)
 });
 
+function feedbackTimer() {
+    feedback.classList.add("hide");
+}
+
 function choiceClick() {
+    // if statement to check if answer was correct or not
     if (questionsAndAnswers[i].answer === this.textContent) {
+        feedback.textContent = "Correct!";
+        feedback.classList.remove("hide");
+        setTimeout(feedbackTimer, 1000);
         console.log("Correct!");
     } else {
+        feedback.textContent = "Wrong!"
+        count = count - 10;
+        feedback.classList.remove("hide");
+        setTimeout(feedbackTimer, 1000);
         console.log("Incorrect");
     }
-    i++;
-    questionTitle.textContent = questionsAndAnswers[i].question;
-    choiceAButton.textContent = questionsAndAnswers[i].choiceA;
-    choiceBButton.textContent = questionsAndAnswers[i].choiceB;
-    choiceCButton.textContent = questionsAndAnswers[i].choiceC;
-    choiceDButton.textContent = questionsAndAnswers[i].choiceD;
 
+    // if statement to check if theres any timer left or any questions left
+    if ((i + 1) === questionsAndAnswers.length || count <= 0) {
+        questions.classList.add("hide");
+        endScreen.classList.remove("hide");
+    } else {
+        i++;
+        questionTitle.textContent = questionsAndAnswers[i].question;
+        choiceAButton.textContent = questionsAndAnswers[i].choiceA;
+        choiceBButton.textContent = questionsAndAnswers[i].choiceB;
+        choiceCButton.textContent = questionsAndAnswers[i].choiceC;
+        choiceDButton.textContent = questionsAndAnswers[i].choiceD;
 
+    }
 }
 
 // The function to start the quiz
