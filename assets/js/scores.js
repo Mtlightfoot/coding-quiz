@@ -1,18 +1,12 @@
 const highscoresID = document.querySelector("#highscores");
 
-const highscores = [];
-
 const highscoresFromStorage = JSON.parse(localStorage.getItem("highscores"));
 
-const li = document.createElement("li");
-li.textContent = highscores[0].initial + " - " + highscores[0].score;
-highscoresID.appendChild(li)
+console.log(highscoresFromStorage);
 
-console.log(highscores);
-
-function addScore() {
-    JSON.parse(localStorage.getItem("highscores"));
-    highscores.push(highscoresFromStorage);
-
+for (let i = 0; i < highscoresFromStorage.length; i++) {
+    const score = document.createElement("li");
+    score.textContent = highscoresFromStorage[i].initial + " - " + highscoresFromStorage[i].score;
+    highscoresID.appendChild(score);
 }
 
