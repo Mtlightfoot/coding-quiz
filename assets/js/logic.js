@@ -42,6 +42,10 @@ const feedback = document.querySelector("#feedback");
 const submitButton = document.querySelector("#submit");
 const finalScore = document.querySelector("#final-score");
 
+// audio files
+const correctAudio = new Audio("assets/sfx/correct.wav");
+const incorrectAudio = new Audio("assets/sfx/incorrect.wav");
+
 // A function to grab the new score and initials
 function newScore() {
     let highscoresFromStorage = JSON.parse(localStorage.getItem("highscores"));
@@ -69,9 +73,10 @@ let count = 75;
 function timer() {
     const interval = setInterval(function () {
         time.textContent = count;
-        count--;
         if (count <= 0 || ((i + 1 === questionsAndAnswers.length))) {
             clearInterval(interval);
+        } else {
+            count--;
         }
     }, 1000);
 }
@@ -115,7 +120,7 @@ function choiceClick() {
         feedback.textContent = "Correct!";
         feedback.classList.remove("hide");
         setTimeout(feedbackTimer, 1000);
-        console.log("Correct!");
+        correctAudio.play();
     } else {
         feedback.textContent = "Wrong!"
         count = count - 10;
@@ -125,7 +130,7 @@ function choiceClick() {
         feedback.classList.remove("hide");
         time.textContent = count;
         setTimeout(feedbackTimer, 1000);
-        console.log("Incorrect");
+        incorrectAudio.play();
     }
 
     // if statement to check if theres any timer left or any questions left
