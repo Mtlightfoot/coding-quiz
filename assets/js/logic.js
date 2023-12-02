@@ -39,7 +39,8 @@ const endScreen = document.querySelector("#end-screen");
 const questionTitle = document.querySelector("#question-title");
 const time = document.querySelector("#time");
 const feedback = document.querySelector("#feedback");
-const submitButton = document.querySelector("#submit")
+const submitButton = document.querySelector("#submit");
+const finalScore = document.querySelector("#final-score");
 
 // A function to grab the new score and initials
 function newScore() {
@@ -66,7 +67,6 @@ let i = 0;
 let count = 75;
 
 function timer() {
-
     const interval = setInterval(function () {
         count--;
         time.textContent = count;
@@ -126,6 +126,8 @@ function choiceClick() {
 
     // if statement to check if theres any timer left or any questions left
     if ((i + 1) === questionsAndAnswers.length || count <= 0) {
+        time.textContent = count;
+        finalScore.textContent = count;
         questions.classList.add("hide");
         endScreen.classList.remove("hide");
         submitButton.addEventListener("click", newScore)
@@ -149,3 +151,4 @@ function startQuiz() {
     time.textContent = count;
     timer();
 }
+
