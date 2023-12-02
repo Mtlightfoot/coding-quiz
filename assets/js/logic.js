@@ -119,6 +119,7 @@ function choiceClick() {
     } else {
         feedback.textContent = "Wrong!"
         count = count - 10;
+        time.textContent = count;
         feedback.classList.remove("hide");
         setTimeout(feedbackTimer, 1000);
         console.log("Incorrect");
@@ -126,7 +127,6 @@ function choiceClick() {
 
     // if statement to check if theres any timer left or any questions left
     if ((i + 1) === questionsAndAnswers.length || count <= 0) {
-        time.textContent = count;
         finalScore.textContent = count;
         questions.classList.add("hide");
         endScreen.classList.remove("hide");

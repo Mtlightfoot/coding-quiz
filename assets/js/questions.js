@@ -23,4 +23,28 @@ const questionsAndAnswers = [
         choiceD: "None of the above",
         answer: "Both getElementsById() and getElementsByClassName()",
     },
+    {
+        question: "Which of the following is not a Javascript framework?",
+        choiceA: "Node",
+        choiceB: "Vue",
+        choiceC: "React",
+        choiceD: "Cassandra",
+        answer: "Cassandra",
+    },
+    {
+        question: "How to stop an interval timer in Javascript?",
+        choiceA: "clearInterval",
+        choiceB: "clearTimer",
+        choiceC: "intervalOver",
+        choiceD: "None of the above",
+        answer: "clearInterval",
+    },
+    {
+        question: "Which of the following is not a primitive data type in JavaScript?",
+        choiceA: "Number",
+        choiceB: "String",
+        choiceC: "Boolean",
+        choiceD: "Object",
+        answer: "Object",
+    },
 ];

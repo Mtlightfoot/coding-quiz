@@ -3,7 +3,11 @@ const highscoresID = document.querySelector("#highscores");
 const clearButton = document.querySelector("#clear");
 
 // creates variable that holds all current local storage scores
-const highscoresFromStorage = JSON.parse(localStorage.getItem("highscores"));
+let highscoresFromStorage = JSON.parse(localStorage.getItem("highscores"));
+
+if (highscoresFromStorage === null) {
+    highscoresFromStorage = [];
+}
 
 // for loop to add new scores to the high score table
 for (let i = 0; i < highscoresFromStorage.length; i++) {
