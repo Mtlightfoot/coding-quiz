@@ -48,6 +48,7 @@ function newScore() {
         score: count,
     };
     console.log(newScore);
+    localStorage.setItem("highscores", JSON.stringify(newScore));
 }
 
 // Timer that starts from 75 and ends at 0
@@ -132,12 +133,9 @@ function choiceClick() {
 // The function to start the quiz
 startQuizButton.addEventListener("click", startQuiz);
 
-
 function startQuiz() {
     startScreen.classList.add("hide");
     questions.classList.remove("hide");
     time.textContent = count;
     timer();
 }
-
-
