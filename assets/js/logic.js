@@ -68,8 +68,8 @@ let count = 75;
 
 function timer() {
     const interval = setInterval(function () {
-        count--;
         time.textContent = count;
+        count--;
         if (count <= 0 || ((i + 1 === questionsAndAnswers.length))) {
             clearInterval(interval);
         }
@@ -119,14 +119,20 @@ function choiceClick() {
     } else {
         feedback.textContent = "Wrong!"
         count = count - 10;
-        time.textContent = count;
+        if (count < 0) {
+            count = 0;
+        }
         feedback.classList.remove("hide");
+        time.textContent = count;
         setTimeout(feedbackTimer, 1000);
         console.log("Incorrect");
     }
 
     // if statement to check if theres any timer left or any questions left
     if ((i + 1) === questionsAndAnswers.length || count <= 0) {
+        if (count < 0) {
+            count = 0;
+        }
         finalScore.textContent = count;
         questions.classList.add("hide");
         endScreen.classList.remove("hide");
