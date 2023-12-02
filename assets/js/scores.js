@@ -12,7 +12,8 @@ for (let i = 0; i < highscoresFromStorage.length; i++) {
     highscoresID.appendChild(score);
 }
 
-clearButton.addEventListener("click", function() {
+// clear button to clear highscores off the table
+clearButton.addEventListener("click", function () {
     localStorage.clear();
-    location.reload();
+    highscoresID.innerHTML = "";
 });
