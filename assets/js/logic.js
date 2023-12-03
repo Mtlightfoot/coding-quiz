@@ -65,6 +65,8 @@ function newScore() {
     feedback.textContent = "Score Submitted!";
     feedback.classList.remove("hide");
     setTimeout(feedbackTimer, 1000);
+
+    window.location.href = "highscores.html";
 }
 
 // Timer that starts from 75 and ends at 0
