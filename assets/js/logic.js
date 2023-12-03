@@ -62,8 +62,9 @@ function newScore() {
     highscoresFromStorage.push(newScore);
     localStorage.setItem("highscores", JSON.stringify(highscoresFromStorage));
 
-    console.log(highscoresFromStorage)
-
+    feedback.textContent = "Score Submitted!";
+    feedback.classList.remove("hide");
+    setTimeout(feedbackTimer, 1000);
 }
 
 // Timer that starts from 75 and ends at 0
